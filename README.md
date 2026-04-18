@@ -1,61 +1,62 @@
-# ☁️ Modern Java Weather App
+## 🚀 Getting started
 
-![Скриншот приложения](screenshots/screenshot.png)
+### Requirements
 
-![Java Version](https://img.shields.io/badge/Java-17%2B-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![Swing](https://img.shields.io/badge/GUI-Java_Swing-007396?style=for-the-badge&logo=java)
-![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)
+- JDK 17 or newer
+- Maven 3.6+
+- An OpenWeatherMap API key
 
-Современное десктопное приложение погоды, полностью написанное на **чистой Java + Swing**.  
-Кастомный безрамочный тёмный интерфейс, плавные анимации, перетаскивание окна мышкой и данные в реальном времени из **OpenWeatherMap API**.
+### Run locally
 
+```bash
+git clone https://github.com/kyousukr/WeatherApp.git
+cd WeatherApp
+mvn clean package
+mvn exec:java -Dexec.mainClass="com.kyousukr.weatherapp.WeatherApp"
+```
 
-## ✨ Возможности
-- Реальное время: температура, ощущается как, влажность, ветер (скорость + направление), давление.
-- Полностью кастомный UI: безрамочное окно, закруглённые углы, drag-to-move.
-- Тёмная минималистичная тема.
-- Плавные анимации: fade-in при загрузке данных, «shake» при ошибке.
-- Иконки погоды загружаются напрямую с CDN OpenWeatherMap.
-- Минимальные зависимости — ручной парсинг JSON и отрисовка через `Graphics2D`.
+🔐 API key setup
 
-## 🚀 Как запустить
+The app looks for your OpenWeatherMap key in one of these places:
 
-### Требования
-- **JDK 17** или новее
-- **Maven 3.6+**
-- Бесплатный API-ключ от [OpenWeatherMap](https://openweathermap.org/api)
+src/main/resources/config.properties
+JVM system property: -Dopenweathermap.api.key=...
 
-### Установка и запуск
+Example config.properties:
 
-1. **Склонируй репозиторий:**
-   ```bash
-   git clone https://github.com/kyousukr/WeatherApp.git
-   cd WeatherApp
-2.Настрой API-ключ:
-Открой файл src/main/java/com/yourname/weather/WeatherApp.java
-Найди строку с apiKey (или YOUR_API_KEY_HERE) и вставь свой ключ.Важно: Никогда не заливай реальный ключ в GitHub! Позже мы вынесем его в config.properties.
-Собери и запусти:Bashmvn clean compile
-mvn exec:java -Dexec.mainClass="com.yourname.weather.WeatherApp"Или просто открой проект в IntelliJ IDEA и запусти главный класс WeatherApp.java.
+openweathermap.api.key=PUT_YOUR_API_KEY
 
-📂 Структура проекта
-textWeatherApp/
+Important: do not commit your real API key to GitHub.
+
+📁 Project structure
+WeatherApp/
 ├── pom.xml
 ├── README.md
 ├── .gitignore
+├── screenshots/
+│   └── screenshot.png
 └── src/
-└── main/
-├── java/com/yourname/weather/
-│   └── WeatherApp.java          # Главный класс + весь UI
-└── resources/
-└── icons/
-└── search.png            # Иконка поиска (если используется)
+    └── main/
+        ├── java/
+        │   └── com/kyousukr/weatherapp/
+        │       ├── WeatherApp.java
+        │       └── WeatherService.java
+        └── resources/
+            ├── config.properties
+            └── icons/
+                └── search.png
+🛠️ Notes
+Weather data is parsed with Gson.
+API errors and missing keys are handled gracefully.
+If the API key is missing, the app shows a clear startup error.
+The project is intentionally lightweight and easy to extend.
+📌 Future improvements
+Move API settings fully into external config
+Add forecast support
+Add city history / favorites
+Improve icon caching
+Split UI into smaller components
+🧑‍💻 About this project
 
-🛠️ Известные ограничения и планы
-
-Сейчас используется простой ручной парсинг JSON (через indexOf). Работает, но в будущем добавим Gson.
-API-ключ пока зашит в код → скоро вынесем в properties-файл.
-Только текущая погода (позже добавим прогноз на 5 дней).
-
-
-Сделано с ❤️ первым проектом на GitHub
-kyousukr
+This is my first GitHub project and one of my first Java desktop apps.
+Built to learn Swing, API integration, and clean project structure.
