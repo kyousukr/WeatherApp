@@ -1,5 +1,7 @@
 # ☁️ Modern Java Weather App
 
+![Скриншот приложения](screenshots/screenshot.png)
+
 ![Java Version](https://img.shields.io/badge/Java-17%2B-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Swing](https://img.shields.io/badge/GUI-Java_Swing-007396?style=for-the-badge&logo=java)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)
@@ -7,7 +9,6 @@
 Современное десктопное приложение погоды, полностью написанное на **чистой Java + Swing**.  
 Кастомный безрамочный тёмный интерфейс, плавные анимации, перетаскивание окна мышкой и данные в реальном времени из **OpenWeatherMap API**.
 
-*(Добавь сюда GIF или скриншот приложения в действии — как выглядит окно, анимации и поиск)*
 
 ## ✨ Возможности
 - Реальное время: температура, ощущается как, влажность, ветер (скорость + направление), давление.
