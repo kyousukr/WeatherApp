@@ -1,61 +1,43 @@
-# ☁️ Modern Java Weather App
+# Weather App
 
-![Скриншот приложения](screenshots/screenshot.png)
+A desktop weather application built with Java Swing.
 
-![Java Version](https://img.shields.io/badge/Java-17%2B-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![Swing](https://img.shields.io/badge/GUI-Java_Swing-007396?style=for-the-badge&logo=java)
-![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)
+## Features
+- Current weather display
+- Weekly forecast
+- City search
+- Modern dark UI
 
-Современное десктопное приложение погоды, полностью написанное на **чистой Java + Swing**.  
-Кастомный безрамочный тёмный интерфейс, плавные анимации, перетаскивание окна мышкой и данные в реальном времени из **OpenWeatherMap API**.
+## Requirements
+- Java 17+
+- Maven
 
+## Setup
+1. Get OpenWeatherMap API key
+2. Add to src/main/resources/config.properties:
+   ```
+   openweathermap.api.key=your_api_key_here
+   ```
+3. Build and run:
+   ```
+   mvn clean package
+   java -jar target/weather-app-1.0.0-shaded.jar
+   ```
 
-## ✨ Возможности
-- Реальное время: температура, ощущается как, влажность, ветер (скорость + направление), давление.
-- Полностью кастомный UI: безрамочное окно, закруглённые углы, drag-to-move.
-- Тёмная минималистичная тема.
-- Плавные анимации: fade-in при загрузке данных, «shake» при ошибке.
-- Иконки погоды загружаются напрямую с CDN OpenWeatherMap.
-- Минимальные зависимости — ручной парсинг JSON и отрисовка через `Graphics2D`.
-
-## 🚀 Как запустить
-
-### Требования
-- **JDK 17** или новее
-- **Maven 3.6+**
-- Бесплатный API-ключ от [OpenWeatherMap](https://openweathermap.org/api)
-
-### Установка и запуск
-
-1. **Склонируй репозиторий:**
-   ```bash
-   git clone https://github.com/kyousukr/WeatherApp.git
-   cd WeatherApp
-2.Настрой API-ключ:
-Открой файл src/main/java/com/yourname/weather/WeatherApp.java
-Найди строку с apiKey (или YOUR_API_KEY_HERE) и вставь свой ключ.Важно: Никогда не заливай реальный ключ в GitHub! Позже мы вынесем его в config.properties.
-Собери и запусти:Bashmvn clean compile
-mvn exec:java -Dexec.mainClass="com.yourname.weather.WeatherApp"Или просто открой проект в IntelliJ IDEA и запусти главный класс WeatherApp.java.
-
-📂 Структура проекта
-textWeatherApp/
-├── pom.xml
-├── README.md
-├── .gitignore
-└── src/
-└── main/
-├── java/com/yourname/weather/
-│   └── WeatherApp.java          # Главный класс + весь UI
-└── resources/
-└── icons/
-└── search.png            # Иконка поиска (если используется)
-
-🛠️ Известные ограничения и планы
-
-Сейчас используется простой ручной парсинг JSON (через indexOf). Работает, но в будущем добавим Gson.
-API-ключ пока зашит в код → скоро вынесем в properties-файл.
-Только текущая погода (позже добавим прогноз на 5 дней).
-
-
-Сделано с ❤️ первым проектом на GitHub
-kyousukr
+## Project Structure
+```
+src/main/java/com/yourname/weather/
+├── MainWindow.java          # Main application class & entry point
+├── SearchPanel.java          # Search functionality
+├── CurrentWeatherCard.java   # Current weather display
+├── WeeklyForecastPanel.java  # Weekly forecast
+├── ForecastCard.java         # Single forecast card
+├── TitleBar.java             # Custom title bar
+├── StatusBar.java            # Status bar
+├── WindowButton.java          # Window controls
+├── UITheme.java              # UI theme constants
+├── WeatherService.java        # API integration
+└── utils/
+    ├── AnimationHelper.java   # Animation utilities
+    └── RenderUtils.java       # Rendering helpers
+```
